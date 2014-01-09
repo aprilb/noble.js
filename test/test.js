@@ -30,20 +30,6 @@ sinon.format = function (val) {
 beforeEach(function () {
     server = sinon.fakeServer.create();
     server.autoRespond = true;
-
-    /*server.respondWith("POST", "/oauth/token", function (req) {
-        var body = JSON.parse(req.requestBody);
-
-        if (body.username === "testuser" && body.password === "123456") {
-            req.respond();
-        } else {
-            req.respond(400, defaultHeaders, JSON.stringify({
-                error: "invalid_request",
-                error_description: "invalid user name or password"
-            }));
-        }
-    });
-    */
 });
 
 afterEach(function () {

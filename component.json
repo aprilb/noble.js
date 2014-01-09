@@ -14,11 +14,9 @@
   "development": {
     "visionmedia/mocha": "*",
     "dominicbarnes/expect.js": "*",
-    "component/jquery": "*",
-    "components/backbone": "*",
-    "component/underscore": "*",
-    "victorquinn/chancejs": "develop",
-    "ianstormtaylor/sinon": "*"
+    "victorquinn/chancejs": "*",
+    "ianstormtaylor/sinon": "*",
+    "yields/coverage": "*"
   },
   "scripts": [
     "index.js",
@@ -41,5 +39,6 @@
     "lib/reference.js",
     "lib/search.js",
     "lib/utils.js"
-  ]
+  ],
+  "remotes": []
 }

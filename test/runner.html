@@ -4,22 +4,15 @@
     <meta charset="utf-8">
     <title>Mocha Tests</title>
     <link rel="stylesheet" href="../build/build.css">
-    <link rel="stylesheet" href="JSCovReporter/reporter.css">
+    <style>#mocha { display: none; }</style>
 </head>
 <body>
-    <div id="mocha"></div>
     <div id="coverage"></div>
-    <div id="menu"></div>
+    <div id="mocha"></div>
 
     <script src="../build/build.js"></script>
     <script>
-        var jQuery = $ = require("jquery"),
-        Backbone = require("backbone"),
-        _ = require("underscore");
-    </script>
-    <script src="JSCovReporter/reporter.js"></script>
-    <script src="JSCovReporter/JSCovReporter.js"></script>
-    <script>
+        var cov = require("coverage")("noble.js");
         require("mocha");
 
         mocha.setup("bdd");
@@ -44,12 +37,7 @@
     <script src="lib/graph/UserAlert.js"></script>
     <script>
         (window.mochaPhantomJS || mocha).run(function () {
-            if (typeof window.__$coverObject !== "undefined") {
-                $(document.body).addClass("coverage-testing");
-                $("#coverage, #menu").show();
-
-                var reporter = new JSCovReporter({ coverObject: window.__$coverObject });
-            }
+            cov.render();
         });
     </script>
 </body>
