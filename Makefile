@@ -1,10 +1,11 @@
 BIN = ./node_modules/.bin
 COMPONENT = $(BIN)/component
 ASSETS = $(BIN)/component-assets
-SERVE = $(BIN)/component-serve
+TEST = $(BIN)/component-test
 COVERJS = $(BIN)/coverjs
 JSHINT = $(BIN)/jshint
 
+TEST_MODE := browser
 COMPONENT_DEV ?= --dev
 
 LIB = lib/**/*.js
@@ -35,9 +36,6 @@ lib-cov: $(wildcard $(LIB)) | node_modules
 	$(COVERJS) --output $@ --recursive lib/*
 	$(ASSETS) scripts:index.js,$(strip $(LIBCOV))
 
-server: | node_modules components
-	$(SERVE) --port $(PORT)
-
 lint:
 	$(JSHINT)
 
@@ -54,7 +52,7 @@ clean-build:
 clean-cov:
 	rm -rf lib-cov/
 
-test: server
+test: deps
+	$(TEST) $(TEST_MODE)
 
-.PHONY: all deps lib lib-cov server lint
-.PHONY: clean clean-all clean-deps clean-build test
+.PHONY: all deps lib lib-cov lint clean clean-all clean-deps clean-build test
