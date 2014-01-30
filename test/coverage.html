@@ -4,12 +4,15 @@
     <meta charset="utf-8">
     <title>Mocha Tests</title>
     <link rel="stylesheet" href="../build/build.css">
+    <style>#mocha { display: none; }</style>
 </head>
 <body>
+    <div id="coverage"></div>
     <div id="mocha"></div>
 
     <script src="../build/build.js"></script>
     <script>
+        var cov = require("coverage")("noble.js");
         require("mocha");
 
         mocha.setup("bdd");
@@ -33,7 +36,9 @@
     <script src="lib/graph/User.js"></script>
     <script src="lib/graph/UserAlert.js"></script>
     <script>
-        (window.mochaPhantomJS || mocha).run();
+        (window.mochaPhantomJS || mocha).run(function () {
+            cov.render();
+        });
     </script>
 </body>
 </html>
