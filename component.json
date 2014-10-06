@@ -52,6 +52,7 @@
     "lib/index.js",
     "lib/participation.js",
     "lib/reference.js",
+    "lib/sso.js",
     "lib/search.js",
     "lib/supports.js",
     "lib/utils.js"
